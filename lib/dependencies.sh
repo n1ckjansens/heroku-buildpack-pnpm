@@ -145,7 +145,9 @@ pnpm_node_modules() {
   local production=${PNPM_PRODUCTION:-false}
 
   echo "Installing node modules (pnpm-lock.yaml)"
+  
   cd "$build_dir" || return
+  rm -rf $(pnpm store path)
   monitor "pnpm-install" pnpm install
 }
 
